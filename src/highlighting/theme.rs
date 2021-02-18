@@ -127,6 +127,10 @@ pub struct ThemeSettings {
 
     /// The color of the shadow used when a text area can be horizontally scrolled.
     pub shadow: Option<Color>,
+
+    pub unfocused_background: Option<Color>,
+
+    pub autocomplete_background: Option<Color>,
 }
 
 /// A component of a theme meant to highlight a specific thing (e.g string literals)
@@ -410,6 +414,8 @@ impl ParseSettings for ThemeSettings {
                 "activeGuide" => settings.active_guide = Color::parse_settings(value).ok(),
                 "stackGuide" => settings.stack_guide = Color::parse_settings(value).ok(),
                 "shadow" => settings.shadow = Color::parse_settings(value).ok(),
+                "unfocusedBackground" => settings.unfocused_background = Color::parse_settings(value).ok(),
+                "autocompleteBackground" => settings.autocomplete_background = Color::parse_settings(value).ok(),
                 "shadowWidth"| // ignored
                 "invisibles" | // ignored
                 _ => (),

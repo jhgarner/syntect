@@ -41,6 +41,13 @@ impl ThemeSet {
         Self::load_from_reader(&mut file)
     }
 
+    /// Loads a theme from a .json file
+    pub fn get_theme_json<P: AsRef<Path>>(path: P) -> Result<Theme, LoadingError> {
+        let file = File::open(path)?;
+        let reader = BufReader::new(file);
+        Ok(Theme::parse_settings(serde_json::from_reader(reader).unwrap())?)
+    }
+
     /// Loads a theme given a readable stream
     pub fn load_from_reader<R: BufRead + Seek>(r: &mut R) -> Result<Theme, LoadingError> {
         Ok(Theme::parse_settings(read_plist(r)?)?)
