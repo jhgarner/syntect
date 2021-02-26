@@ -131,6 +131,8 @@ pub struct ThemeSettings {
     pub unfocused_background: Option<Color>,
 
     pub autocomplete_background: Option<Color>,
+
+    pub autocomplete_foreground: Option<Color>,
 }
 
 /// A component of a theme meant to highlight a specific thing (e.g string literals)
@@ -416,6 +418,7 @@ impl ParseSettings for ThemeSettings {
                 "shadow" => settings.shadow = Color::parse_settings(value).ok(),
                 "unfocusedBackground" => settings.unfocused_background = Color::parse_settings(value).ok(),
                 "autocompleteBackground" => settings.autocomplete_background = Color::parse_settings(value).ok(),
+                "autocompleteForeground" => settings.autocomplete_foreground = Color::parse_settings(value).ok(),
                 "shadowWidth"| // ignored
                 "invisibles" | // ignored
                 _ => (),
